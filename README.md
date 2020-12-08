@@ -6,6 +6,8 @@ In the following demo, once the hexagon button is clicked, this triggers a funct
 
 Hence keeping all the tabs in sync.
 
+
 Demo : [Github page](http://jhamadhav.com/tabSync/)
+
 ![tabSync-demo](./demo/tabSync-demo.gif)
 
