@@ -13,6 +13,7 @@ self.addEventListener('install', (event) => {
             })
     );
 });
+
 self.addEventListener('activate', event => {
     console.log('V1 now ready to handle fetches!');
 });
@@ -31,7 +32,7 @@ self.addEventListener('fetch', async (event) => {
 });
 
 self.addEventListener('message', event => {
-    console.log(`[Message] event: `, event.data.value);
+    // console.log(`[Message] event: `, event);
     clients.matchAll().then(clients => {
         clients.forEach(client => {
             client.postMessage({

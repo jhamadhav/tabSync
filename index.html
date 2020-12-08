@@ -4,16 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tab sync</title>
+    <title>hex-clicker | Tab sync</title>
+
+    <!-- style,scripts and fonts -->
+    <link rel="stylesheet" href="./styles/main.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Gugi|Roboto+Mono" rel="stylesheet" />
     <script src="./scripts/main.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <p>open another tab to see tab syncing with each other</p>
-        <div id="data">0</div>
-        <button id="btn">Click</button>
+    <div id="container">
+        <div class="btn-holder">
+            <div id="point">0</div>
+            <svg id="btn" width="130" height="140" viewBox="0 0 130 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M58.7652 2.40767C62.6505 0.284129 67.3495 0.284131 71.2348 2.40767L123.187 30.8024C127.358 33.0821 129.952 37.4564 129.952 42.2098V97.7902C129.952 102.544 127.358 106.918 123.187 109.198L71.2348 137.592C67.3495 139.716 62.6505 139.716 58.7652 137.592L6.81331 109.198C2.64234 106.918 0.0480957 102.544 0.0480957 97.7902V42.2098C0.0480957 37.4564 2.64234 33.0821 6.81332 30.8024L58.7652 2.40767Z"
+                    fill="#DD2244" />
+            </svg>
+        </div>
+        <h2>click to count</h2>
     </div>
+    <footer>
+        NOTE : Open <a href="/" target="_blank">another tab</a> to see live tab sync.
+    </footer>
 </body>
 
 </html>
