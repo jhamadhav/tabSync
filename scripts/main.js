@@ -1,7 +1,7 @@
 let num = 0;
+window.onload = async () => {
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
+    if ('serviceWorker' in navigator) {
         try {
             let sw = await navigator.serviceWorker.register("serviceWorker.js", { scope: "/" });
             // Registration was successful
@@ -15,12 +15,7 @@ if ('serviceWorker' in navigator) {
             increasePoint(num);
             // console.log(event.data.value);
         });
-    });
-
-}
-
-window.onload = () => {
-
+    }
 
     let hexBtnHolder = document.getElementsByClassName("btn-holder");
     hexBtnHolder[0].onclick = () => {
@@ -29,9 +24,13 @@ window.onload = () => {
     }
 
 }
-
 const sendMsgToSW = (data = { msg: "hello" }) => {
-    navigator.serviceWorker.controller.postMessage(data);
+    if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage(data);
+    } else {
+        window.location.reload();
+    }
+
 }
 
 const increasePoint = (num = 0) => {
