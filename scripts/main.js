@@ -3,7 +3,7 @@ let num = 0;
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
         try {
-            let sw = await navigator.serviceWorker.register("serviceworker.js", { scope: "/tabSync/" });
+            let sw = await navigator.serviceWorker.register("serviceWorker.js", { scope: "/tabSync/" });
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', sw.scope);
         } catch (err) {
