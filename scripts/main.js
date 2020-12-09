@@ -3,7 +3,7 @@ let num = 0;
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
         try {
-            let sw = await navigator.serviceWorker.register("serviceWorker.js", { scope: "/tabSync/" });
+            let sw = await navigator.serviceWorker.register("serviceWorker.js", { scope: "/" });
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', sw.scope);
         } catch (err) {
@@ -20,6 +20,8 @@ if ('serviceWorker' in navigator) {
 }
 
 window.onload = () => {
+
+
     let hexBtnHolder = document.getElementsByClassName("btn-holder");
     hexBtnHolder[0].onclick = () => {
         num++;
