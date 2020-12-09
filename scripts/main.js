@@ -10,6 +10,11 @@ if ('serviceWorker' in navigator) {
             // registration failed :(
             console.log('ServiceWorker registration failed: ', err);
         }
+        navigator.serviceWorker.addEventListener('message', event => {
+            num = event.data.value;
+            increasePoint(num);
+            // console.log(event.data.value);
+        });
     });
 
 }
@@ -20,11 +25,7 @@ window.onload = () => {
         num++;
         sendMsgToSW({ value: num });
     }
-    navigator.serviceWorker.addEventListener('message', event => {
-        num = event.data.value;
-        increasePoint(num);
-        // console.log(event.data.value);
-    });
+
 }
 
 const sendMsgToSW = (data = { msg: "hello" }) => {
