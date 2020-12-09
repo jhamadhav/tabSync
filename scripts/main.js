@@ -3,7 +3,7 @@ window.onload = async () => {
 
     if ('serviceWorker' in navigator) {
         try {
-            let sw = await navigator.serviceWorker.register("serviceWorker.js");
+            let sw = await navigator.serviceWorker.register("serviceWorker.js", { scope: "/tabSync/" });
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', sw.scope);
         } catch (err) {
