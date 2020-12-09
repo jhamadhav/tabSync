@@ -3,19 +3,21 @@ let num = 0;
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
         try {
-            let sw = await navigator.serviceWorker.register("../serviceWorker.js");
+            let sw = await navigator.serviceWorker.register("serviceworker.js");
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', sw.scope);
         } catch (err) {
             // registration failed :(
             console.log('ServiceWorker registration failed: ', err);
         }
+
+        navigator.serviceWorker.addEventListener('message', event => {
+            num = event.data.value;
+            increasePoint(num);
+            // console.log(event.data.value);
+        });
     });
-    navigator.serviceWorker.addEventListener('message', event => {
-        num = event.data.value;
-        increasePoint(num);
-        // console.log(event.data.value);
-    });
+
 }
 
 window.onload = () => {
