@@ -1,0 +1,9 @@
+{
+    "lang": "en",
+    "short_name": "hex-clicker | tabSync",
+    "name": "hex-clicker | tabSync",
+    "description": "Demonstrate syncing tabs across the browser",
+    "start_url": "/tabSync/",
+    "display": "standalone",
+    "scope": "/tabSync/"
+}
