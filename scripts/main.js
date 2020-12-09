@@ -1,31 +1,41 @@
 let num = 0;
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-        try {
-            let sw = await navigator.serviceWorker.register("serviceworker.js");
-            // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', sw.scope);
-        } catch (err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', err);
+let registerSW = () => {
+    // This is the service worker with the Cache-first network
+
+    // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+    // Check compatibility for the browser we're running this in
+    if ("serviceWorker" in navigator) {
+        let serviceWorkerFileName = 'serviceWorker.js';
+        if (navigator.serviceWorker.controller && navigator.serviceWorker.controller.scriptURL === self.location.href + serviceWorkerFileName) {
+            console.log("Active service worker found, no need to register", navigator.serviceWorker.controller);
+        } else {
+            // Register the service worker
+            navigator.serviceWorker
+                .register(serviceWorkerFileName)
+                .then(function (reg) {
+                    console.log("Service worker has been registered: ", reg);
+                })
+                .catch(function (err) {
+                    console.log('Service Worker Registeration error: ', err);
+                });
         }
-
-        navigator.serviceWorker.addEventListener('message', event => {
-            num = event.data.value;
-            increasePoint(num);
-            // console.log(event.data.value);
-        });
-    });
-
+    }
 }
 
 window.onload = () => {
+    registerSW();
     let hexBtnHolder = document.getElementsByClassName("btn-holder");
     hexBtnHolder[0].onclick = () => {
         num++;
         sendMsgToSW({ value: num });
     }
+    navigator.serviceWorker.addEventListener('message', event => {
+        num = event.data.value;
+        increasePoint(num);
+        // console.log(event.data.value);
+    });
 }
 
 const sendMsgToSW = (data = { msg: "hello" }) => {
